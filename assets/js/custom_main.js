@@ -226,7 +226,7 @@ logoImg.src = logoSrc
 logoImg.style.marginLeft = '20px'
 // logoImg.className = 'logo d-flex align-items-center me-auto me-xl-0'
 logoImg.style.height = '130px'
-logoImg.style.filter = 'invert(1)'
+// logoImg.style.filter = 'invert(1)'
 
 logoImg.alt = ''
 logoLink.appendChild(logoImg)
@@ -236,6 +236,120 @@ document
   .getElementById('headerContainer')
   .insertBefore(logoImg, document.getElementById('headerContainer').firstChild)
 /*<-- end ======= Header ======= -->*/
+/*<-- start ======= Image Slider ======= -->*/
+var sliderImages = [
+  './assets/img/hero-img/hero-img1.jpg',
+  './assets/img/hero-img/hero-img2.jpg',
+  './assets/img/hero-img/hero-img3.jpg',
+]
+
+var currentSlideIndex = 0
+var sliderIntervalTime = 5000 // 5 seconds
+var sliderInterval
+
+// Get the necessary DOM elements
+var sliderImgElement = document.getElementById('sliderImage')
+var sliderDotsContainer = document.getElementById('sliderDots')
+var prevBtn = document.getElementById('prevBtn')
+var nextBtn = document.getElementById('nextBtn')
+
+if (sliderImgElement) {
+  // 1. Initial setup
+  sliderImgElement.src = sliderImages[currentSlideIndex]
+  createDots()
+  updateActiveDot()
+}
+
+// Function to transition to a specific slide index
+function goToSlide(index) {
+  if (index >= 0 && index < sliderImages.length) {
+    currentSlideIndex = index
+    sliderImgElement.src = sliderImages[currentSlideIndex]
+    updateActiveDot()
+
+    // Reset the automatic interval on manual interaction
+    clearInterval(sliderInterval)
+    startSimpleSlider()
+  }
+}
+
+// Function to move to the next slide
+function nextSlide() {
+  let newIndex = (currentSlideIndex + 1) % sliderImages.length
+  goToSlide(newIndex)
+}
+
+// Function to move to the previous slide
+function prevSlide() {
+  let newIndex =
+    (currentSlideIndex - 1 + sliderImages.length) % sliderImages.length
+  goToSlide(newIndex)
+}
+
+// Function to create pagination dots
+function createDots() {
+  if (!sliderDotsContainer) return
+
+  sliderDotsContainer.innerHTML = '' // Clear existing dots
+
+  sliderImages.forEach((_, index) => {
+    const dot = document.createElement('span')
+    dot.classList.add('dot')
+    dot.setAttribute('data-index', index)
+
+    // Add click listener to jump to the corresponding slide
+    dot.addEventListener('click', function () {
+      goToSlide(parseInt(this.getAttribute('data-index')))
+    })
+
+    sliderDotsContainer.appendChild(dot)
+  })
+}
+
+// Function to highlight the currently active dot
+function updateActiveDot() {
+  if (!sliderDotsContainer) return
+
+  // Remove 'active' class from all dots
+  document.querySelectorAll('.dot').forEach((dot) => {
+    dot.classList.remove('active')
+  })
+
+  // Add 'active' class to the current dot
+  const activeDot = sliderDotsContainer.querySelector(
+    `[data-index="${currentSlideIndex}"]`
+  )
+  if (activeDot) {
+    activeDot.classList.add('active')
+  }
+}
+
+// Function to start the automatic rotation
+function startSimpleSlider() {
+  if (!sliderImgElement) {
+    console.error('Slider image element not found.')
+    return
+  }
+
+  // Clear any existing interval before starting a new one
+  if (sliderInterval) {
+    clearInterval(sliderInterval)
+  }
+
+  sliderInterval = setInterval(nextSlide, sliderIntervalTime)
+}
+
+// 2. Add event listeners for arrows
+if (prevBtn) {
+  prevBtn.addEventListener('click', prevSlide)
+}
+if (nextBtn) {
+  nextBtn.addEventListener('click', nextSlide)
+}
+
+// Start the automatic rotation when the page loads
+startSimpleSlider()
+/*<-- end ======= Image Slider ======= -->*/
 
 /*<-- start ======= About Us ======= -->*/
 var aboutUsData = {
@@ -1175,7 +1289,7 @@ contactSections.forEach(function (contactData) {
 /*<-- start ======= Footer  Section ======= -->*/
 var footerData = {
   about: {
-    logoSrc: './assets/img/logo.svg',
+    logoSrc: './assets/img/logo-black.svg',
     description:
       'We will manage the banking and finance for you, while you have more time to manage and run your business efficiently.',
   },

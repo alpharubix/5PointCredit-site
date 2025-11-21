@@ -15,14 +15,8 @@
 
     <meta name="author" content="R1Xchange" />
     <meta name="robots" content="index, follow" />
-    <meta
-      property="og:title"
-      content="R1Xchange - Trade Finance & Business Loans"
-    />
-    <meta
-      property="og:description"
-      content="R1Xchange simplify trade finance and business loans."
-    />
+    <meta property="og:title" content="5PointCredit" />
+    <meta property="og:description" content="5PointCredit" />
     <meta property="og:url" content="https://www.r1xchange.com/" />
     <meta
       property="og:image"
@@ -97,32 +91,32 @@
       /* CSS to block text selection */
       /* } */
 
-      .video-container {
+      /* .video-container {
         width: 100%;
-        /* margin: 10px; */
-      }
+        margin: 10px;
+      } */
 
-      .video-background {
+      /* .video-background {
         width: 100%;
-      }
+      } */
 
       .clients {
         margin-top: -30px;
       }
 
       @media (max-width: 768px) {
-        .video-background {
+        /* .video-background {
           margin-top: 88px;
           width: auto;
           height: 230px;
-        }
+        } */
 
-        .video-container {
+        /* .video-container {
           width: auto;
-        }
+        } */
 
         .home {
-          min-height: 30vh;
+          min-height: 60vh;
           margin-top: 15px !important;
         }
 
@@ -180,7 +174,8 @@
     <!-- start ======= Header ======= -->
     <header
       id="header"
-      class="header fixed-top d-flex align-items-center bg-black"
+      class="header fixed-top d-flex align-items-center"
+      style="background-color: #000080ff;"
     >
       <div
         class="container-fluid d-flex align-items-center justify-content-between"
@@ -201,19 +196,19 @@
     <main id="main">
       <!-- Hero Section - Home Page -->
       <section id="home" class="home">
-        <div class="video-container">
-          <!-- <video
-            autoplay
-            muted
-            loop
-            class="video-background"
-            data-aos="fade-in"
-            style="margin-top: 100px"
-          >
-            <source src="./assets/videos/banner.mp4" type="video/mp4" />
-          </video> -->
+        <img
+          id="sliderImage"
+          alt="Slider"
+          data-aos="fade-in"
+          style="margin-top: 100px; width: 100%; height: 80vh; object-fit: object"
+        />
 
+        <div class="slider-controls">
+          <button id="prevBtn" class="slider-arrow prev-arrow">&#10094;</button>
+          <button id="nextBtn" class="slider-arrow next-arrow">&#10095;</button>
         </div>
+
+        <div id="sliderDots" class="slider-pagination"></div>
       </section>
       <!-- End Hero Section -->
 

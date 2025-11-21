@@ -15,8 +15,8 @@
   --background-color-rgb: 255, 255, 255;
   --default-color: #212529;
   --default-color-rgb: 33, 37, 41;
-  --primary-color: #1290dd;
-  --primary-color-rgb: 18, 144, 221;
+  --primary-color: #72bf58ff;
+  --primary-color-rgb: 114, 191, 88;
   --secondary-color: #32353a;
   --secondary-color-rgb: 50, 53, 58;
   --contrast-color: #ffffff;
@@ -27,9 +27,9 @@
 
 :root {
   --nav-color: #3a3939;
-  --nav-hover-color: #1290dd;
+  --nav-hover-color: #72bf58ff;
   --nav-dropdown-color: #3a3939;
-  --nav-dropdown-hover-color: #1290dd;
+  --nav-dropdown-hover-color: #72bf58ff;
   --nav-dropdown-background-color: #ffffff;
   --nav-mobile-background-color: #ffffff;
   --headerheight: 100px;
@@ -99,16 +99,76 @@ section {
   height: 12px;
   background-color: #fff;
   opacity: 1;
-  border: 1px solid #1290dd;
+  border: 1px solid #72bf58ff;
 }
 
 .clients .clients-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #1290dd;
+  background-color: #72bf58ff;
 }
 
 /*--------------------------------------------------------------
 # Section Title
 --------------------------------------------------------------*/
+
+/* Styling for the Home Section controls */
+.home {
+  position: relative;
+}
+
+/* Styles for Arrows */
+.slider-controls {
+  position: absolute;
+  top: 60%; /* Center vertically */
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px; /* Padding from the screen edges */
+}
+
+.slider-arrow {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 24px;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.slider-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Styles for Dots/Pagination */
+.slider-pagination {
+  position: absolute;
+  bottom: 20px; /* Position at the bottom of the hero section */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.slider-pagination .dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 2px;
+  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider-pagination .dot.active,
+.slider-pagination .dot:hover {
+  background-color: var(--primary-color, #72bf58ff); /* Use your primary color */
+}
 
 .section-title {
   text-align: center;
@@ -192,7 +252,7 @@ section {
 --------------------------------------------------------------*/
 
 .header {
-  height: 150px;
+  /* height: 150px; */
   --background-color: #ffffff;
   color: var(--default-color);
   background-color: var(--background-color);
@@ -258,7 +318,7 @@ section {
   --background-color: #ffffff;
   --secondary-color: #444444;
   --nav-color: #444444;
-  --nav-hover-color: #1290dd;
+  --nav-hover-color: #72bf58ff;
   box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -292,7 +352,7 @@ section {
   --background-color: #ffffff;
   --secondary-color: #444444;
   --nav-color: #444444;
-  --nav-hover-color: #1290dd;
+  --nav-hover-color: #72bf58ff;
 }
 
 /*--------------------------------------------------------------
@@ -802,7 +862,7 @@ section {
   /* --background-color: #000000; */
   --background-color-rgb: 0, 0, 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   position: relative;
   padding: 0px;
   display: flex;
@@ -2910,9 +2970,9 @@ section {
     font-size: 1.5rem;
   }
   #menuList a.active {
-    color: #1290dd !important;
+    color: #72bf58ff !important;
   }
   #menuList a:hover {
-    color: #1290dd !important;
+    color: #72bf58ff !important;
   }
 }
