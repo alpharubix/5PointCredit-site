@@ -950,11 +950,11 @@ section {
 /* Clients Section - Home Page
 ------------------------------*/
 
-.clients {
-  /* padding: 10px 0; */
-}
+/* .clients {
+  padding: 10px 0;
+} */
 
-.clients .client-logo {
+/* .clients .client-logo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -964,9 +964,9 @@ section {
 .clients .client-logo img {
   padding: 40px;
   max-width: 80%;
-  /* transition: 0.3s; */
-  /* opacity: 0.5; */
-  /* filter: grayscale(100); */
+  transition: 0.3s;
+  opacity: 0.5;
+  filter: grayscale(100);
 }
 
 .clients .client-logo img:hover {
@@ -978,7 +978,7 @@ section {
   .clients .client-logo img {
     padding: 20px;
   }
-}
+} */
 
 /* About Section - Home Page
 ------------------------------*/

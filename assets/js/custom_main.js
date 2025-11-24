@@ -87,23 +87,6 @@ var menuItems = [
   },
   {
     icon: 'fa fa-eye',
-    MenuName: 'Clients',
-    MenuIcon: '',
-    MoreMenu: '',
-    Selected: '',
-    PlanOfAction: '#clients',
-    Enable: defaultEnableValue,
-    Visible: defaultVisibleValue,
-    MoreMenuDet: {},
-    class_menu: '',
-    id: '',
-    parentId: '',
-    tooltip: 'View Record',
-    divider: true,
-    display_value: '',
-  },
-  {
-    icon: 'fa fa-eye',
     MenuName: 'Testimonial',
     MenuIcon: '',
     MoreMenu: '',
@@ -223,9 +206,11 @@ logoLink.className = 'logo d-flex align-items-center me-auto me-xl-0'
 logoLink.style.height = '20px'
 var logoImg = document.createElement('img')
 logoImg.src = logoSrc
-logoImg.style.marginLeft = '20px'
+logoImg.style.marginLeft = '30px'
 // logoImg.className = 'logo d-flex align-items-center me-auto me-xl-0'
-logoImg.style.height = '130px'
+logoImg.style.height = '110px'
+logoImg.style.marginTop = '10px'
+logoImg.style.marginBottom = '10px'
 // logoImg.style.filter = 'invert(1)'
 
 logoImg.alt = ''
@@ -236,6 +221,7 @@ document
   .getElementById('headerContainer')
   .insertBefore(logoImg, document.getElementById('headerContainer').firstChild)
 /*<-- end ======= Header ======= -->*/
+
 /*<-- start ======= Image Slider ======= -->*/
 var sliderImages = [
   './assets/img/hero-img/hero-img1.jpg',
@@ -357,15 +343,15 @@ var aboutUsData = {
   SubtitleName: 'Who We Are:',
   PlanOfAction: '#contact',
   aboutUsDescription:
-    'R1Xchange is a leading banking finance and technology company with more than 10 years of experience in the Banking Lending Business.',
+    '5PointCredit is a leading banking finance and technology company with more than 10 years of experience in the Banking Lending and Financial Services Business. ',
   additionalInfo:
-    'Additionally, pre underwrite your financial and tax documents and enable you to get access to the right set of lenders offering you the cheapest and easiest credit solutions to suit all your personal and business requirements.',
+    'Additionally, we pre-underwrite your financial and tax documents and enable you to get access to the right set of lenders offering you the cheapest and easiest credit solutions to suit all your personal and business requirements. ',
   iconBoxes: [
     {
       iconClass: 'bi bi-cash-coin',
       title: 'How we matter?',
       description:
-        'Here at R1Xchange we want to make sure that all key business loan offerings and working capital products from across banks are available under a single roof with a click of a button, so that you can focus on the most important aspect of running your business while we help you manage your banking financials.',
+        'Here at 5PointCredit we want to make sure that all key business loan offerings and working capital products across banks are available under a single roof with the click of a button, so that you can focus on the most important aspect of running your business while we help you manage your banking financials.',
     },
     {
       iconClass: 'bi bi-person-lines-fill',
@@ -428,7 +414,7 @@ var statsData = {
   TitleName: 'How Are We Unique?',
   SubtitleName: 'Our Moat',
   Description:
-    'R1Xchange is a leading banking finance and technology company that will pre underwrite your financial and tax documents and enable you to get access to the right set of lenders offering you the cheapest and easiest credit solutions to suit all your personal and business requirements, we have a whole host of financial and banking products to suit every single business ranging from supply chain finance, overdraft lines, business term loans, inventory finance and revenue based funding.',
+    '5PointCredit is a leading banking finance and technology company that will pre- underwrite your financial and tax documents and enable you to get access to the right set of lenders offering you the cheapest and easiest credit solutions to suit all your personal and business requirements . We have a whole host of financial and banking products to suit every single business ranging from supply chain finance, overdraft lines, business term loans, inventory finance and revenue based funding.',
   BackgroundImage: './assets/img/stats-bg.jpg',
   ListItems: [
     'Deep banking expertise & Financial guidance',
@@ -510,7 +496,7 @@ var servicesData = [
   {
     title: 'Unsecured Business Loans',
     content:
-      'To help manage businesses cover cash flow fluctuations, timely payments and other short term obligations we offer unsecured Overdraft facilities and Term Loans at attractive rates with simple and easy terms.',
+      'To help businesses manage and cover cash flow fluctuations, timely payments and other short term obligations we offer unsecured Overdraft facilities and Term Loans at attractive rates with simple and easy terms.',
     image:
       './assets/img/services-features/UNSECURED_BIZZLOAN-2MEN_HANDSHAKE.jpg',
     order: 'imageFirst',
@@ -519,7 +505,7 @@ var servicesData = [
   {
     title: 'Supply Chain Finance',
     content:
-      'An incredibly powerful method to ease cash flow issues within the business, reduce risk of bad debts and improve the overall sales and performance of the entity.',
+      'An incredibly powerful method of financing that eases cash flow issues within the business, reduces risk of bad debts and improves the overall sales and performance of the entity.',
     image: './assets/img/services-features/SUPPLY_CHAINFINANCE_PHOTO2.jpg',
     order: 'contentFirst',
     icon: 'bi bi-bar-chart',
@@ -527,7 +513,7 @@ var servicesData = [
   {
     title: 'Working Capital Loan',
     content:
-      "Working capital loans help businesses manage their day-to-day operations by providing them with the necessary funds to cover their short-term operations expenses, such as purchasing inventory, managing accounts payable, and meeting other operational costs.<br><br> Businesses can avail various types of working capital loans, such as cash credit, overdraft facility,trade credit, working capital term loans, and bank guarantees. Banks and Lenders provide working capital loans based on factors such as the business's creditworthiness, financial stability, repayment capacity, business plan, and collateral. <br><br>At R1Xchange, we help structure your various working capital needs with the right offering of financing solutions from whole host of lenders post careful understanding and analysis of your business.",
+      "Working capital loans help businesses manage their day-to-day operations by providing them with the necessary funds to cover their short-term operations expenses, such as purchasing inventory, managing accounts payable, and meeting other operational costs.<br><br> Businesses can avail various types of working capital loans, such as cash credit, overdraft facility,trade credit, working capital term loans, and bank guarantees. Banks and Lenders provide working capital loans based on factors such as the business's creditworthiness, financial stability, repayment capacity, business plan, and collateral. <br><br>At 5PointCredit, we help structure your various working capital needs with the right offering of financing solutions from whole host of lenders post careful understanding and analysis of your business.",
     image:
       './assets/img/services-features/WORKING_CAPITAL_LOAN_FACTORY_WORKERS.jpeg',
     order: 'imageFirst',
@@ -536,7 +522,7 @@ var servicesData = [
   {
     title: 'MSME Loan',
     content:
-      'To support the Micro, Small, and Medium Enterprises (MSME) sector, Govt. actively promotes and provides financial support through various initiatives and schemes aimed at providing financial assistance and support. <br><br>The government periodically announces interest subvention schemes to provide financial support MSMEs by offering interest subsidies on loans, thus reducing the overall cost of borrowing for the enterprises.<br><br>Here at R1Xchange, we work with various agencies and Lenders to help you avail the schemes and benefits aimed at enabling MSMEs and businesses to get access to easy and affordable credit.',
+      'To support the Micro, Small, and Medium Enterprises (MSME) sector, Govt.  of  India actively promotes and provides financial support through various initiatives and schemes aimed at providing financial assistance and support. <br><br>The government periodically announces interest subvention schemes to provide financial support to MSMEs by offering interest subsidies on loans, thus reducing the overall cost of borrowing for these enterprises. <br><br>Here at 5PointCredit, we work with various agencies and Lenders to help you avail the schemes and benefits aimed at enabling MSMEs and businesses to get access to easy and affordable credit.',
     image: './assets/img/services-features/MSME_SAMPLE_TAILOR_DRESSMACHINE.jpg',
     order: 'contentFirst',
     icon: 'bi bi-aspect-ratio',
@@ -624,9 +610,9 @@ servicesData.forEach(function (service) {
 /*<-- start ======= Feature Section ======= -->*/
 var featuresInfo = {
   TitleName: 'TYPES OF LOAN PRODUCTS',
-  SubtitleName: 'All of Banking under a single roof',
+  SubtitleName: 'All of Banking under One Roof',
   Description:
-    'Here at R1Xchange we enable you to get access to the right set of lenders offering you the cheapest and easiest credit solutions to suit all your personal and business requirements, we have a whole host of financial and banking products to suit every single business ranging from supply chain finance, overdraft lines, business term loans, inventory finance and revenue based funding, everything under one single roof',
+    'At 5PointCredit, we help you access the right set of lenders offering the most affordable and convenient credit solutions for all your personal and business requirements.  Our comprehensive range of banking and financial products includes supply chain finance, overdraft lines, business term loans, inventory finance, and revenue-based funding — all under one roof."',
 }
 
 var featuresData = [
@@ -635,7 +621,7 @@ var featuresData = [
     title: 'Home Loans',
     subtitle: 'Secured HL',
     content:
-      "Housing loans, also known as home loans, are financial products offered by various banks and financial institutions to help individuals purchase or construct a house. The terms and conditions, as well as the interest rates, for housing loans can vary depending on the financial institution and the current market conditions. Some factors that may influence housing loan interest rates include the Reserve Bank of India's monetary policy, inflation rates, and the overall economic situation.<br><br>At R1Xchange, we understand that Building a home as said is a dream come true for many, we can help you build your dream home and also refinance it as working capital for your business at the most competitive rate of interest.",
+      "Housing loans, also known as home loans, are financial products offered by various banks and financial institutions to help individuals purchase or construct a house. The terms and conditions, as well as the interest rates, for housing loans can vary depending on the financial institution and the current market conditions. Some factors that may influence housing loan interest rates include the Reserve Bank of India's monetary policy, inflation rates, and the overall economic situation.<br><br/>At 5PointCredit, we understand that Building a home as said is a dream come true for many, we  help you build your dream home and also refinance it as working capital for your business at the most competitive rate of interest.",
     image: '',
     secondImage:
       './assets/img/services-features/HOME_LOAN_COUPLE_POSING PICC.jpg',
@@ -646,7 +632,7 @@ var featuresData = [
     title: 'Business Loans / B2B Lending',
     subtitle: 'Unsecured BL',
     content:
-      "Unsecured Business Loan is a loan given for business purposes where the business does not have to pledge any collateral or security to the Lender in order to avail the loan. Repayment of the loan can be done through Equated Monthly Installments or EMIs as is commonly known.<br><br>We ,at R1Xchange, adopt a thorough evaluation process taking into account various factors to ensure that the loan meets the company's needs and is sustainable. Essentially, we identify the purpose of the loan and work towards determining the loan amount post evaluating the creditworthiness through a close review of various data points",
+      'Unsecured Business Loan is a loan given for business purpose where the business does not have to pledge any collateral or security to the Lender in order to avail the loan. The loan can be repaid through Equated Monthly Installments, commonly referred to as EMIs.<br><br/>At 5PointCredit, we follow a comprehensive evaluation process that considers multiple factors to ensure the loan aligns with the company’s requirements and remains sustainable. We begin by identifying the purpose of the loan and then determine the appropriate loan amount after thoroughly assessing creditworthiness through a detailed review of various data points. ',
     image: './assets/img/services-features/B2B_LENDING_BIZZ_LOAN.jpg',
     secondImage: 'assets/img/second-image.jpg',
     buttonId: 'unsecuredhl',
@@ -656,7 +642,7 @@ var featuresData = [
     title: 'AutoMobile Loan',
     subtitle: 'Vehicle Loan',
     content:
-      "Automobile loans are a type of secured loan specifically designed to help individuals purchase vehicles. Also known as auto loans or car loans, these loans typically provide borrowers with the necessary funds to buy a car or 4 wheeler, and the vehicle itself serves as collateral for the loan. The terms and conditions, including the interest rates, repayment schedules, and loan amounts, can vary depending on the lender and the borrower's creditworthiness.<br><br>At R1Xchange, we work with you to understand various factors to ensure that the automobile financing aligns with the company's needs and also ensures in enhancing financial capabilities to bring in efficient service and foster growth. In addition to this , we compare interest rate and loan terms to find the best lender available in your region to ensure convenience and positive business impact.",
+      'Automobile loans are a type of secured loan designed to help individuals purchase vehicles. Also known as auto loans or car loans, they provide borrowers with the necessary funds to buy a car or other four-wheeler, with the vehicle itself serving as collateral for the loan. The terms and conditions—including interest rates, repayment schedules, and loan amounts—may vary based on the lender and the borrower’s creditworthiness.<br><br/>At 5PointCredit, we work closely with you to assess various factors and ensure that the automobile financing aligns with your company’s needs while enhancing financial capabilities to support efficient operations and foster growth. Additionally, we evaluate interest rates and loan terms across lenders in your region to identify the most suitable option, ensuring both convenience and a positive impact on your business.',
     image: '',
     secondImage:
       './assets/img/services-features/AUTOMOBILE_LOAN_CHILD_CAR1.jpg',
@@ -667,7 +653,7 @@ var featuresData = [
     title: 'Supply Chain Finance',
     subtitle: '',
     content:
-      "Supply chain finance, also known as supplier finance or reverse factoring, is a set of solutions that optimizes cash flow by allowing businesses to lengthen their payment terms to their suppliers while  providing the option for their large and SME suppliers to get paid early.<br><br>In recent years, the Indian government has taken initiatives to promote supply chain finance, recognizing its potential to strengthen the country's manufacturing and supply chain capabilities.<br><br>At R1Xchange, we allow companies to strengthen their supply chain and supply distribution by providing liquidity to their suppliers, at a lower cost of capital, based on their credit rating. By enabling businesses to access finance at lower interest rates and providing an avenue for small and medium-sized enterprises (SMEs) we help improve their cash flow and plan their financial resource allocation efficiently. With the digitization of financial services and our large network of Lenders , we offer our clients a diverse set of solutions at the best and competitive rates to enhance and grow their business finance.",
+      "Supply chain finance, also known as supplier finance, channel finance or reverse factoring, is a financial solution that optimizes cash flow by allowing businesses to extend their payment terms while enabling both large and SME suppliers to receive early payments if needed.<br><br/>In recent years, the Indian government has introduced several initiatives to promote supply chain finance, recognizing its potential to strengthen the country's manufacturing sector and overall supply chain capabilities.<br><br/>At 5PointCredit, we help companies strengthen their supply chain and distribution network by providing liquidity to their suppliers at a lower cost of capital, based on the company’s credit rating. By enabling businesses to access financing at competitive interest rates and offering SMEs a reliable avenue for funding, we support improved cash flow and more efficient financial resource planning. With the digitization of financial services and our extensive network of lenders, we provide clients with a diverse range of solutions at highly competitive rates to enhance and grow their business financing capabilities.",
     image: './assets/img/services-features/SUPPLY_CHAINMEN_SHADOW.jpg',
     buttonId: 'supplychain',
   },
@@ -676,7 +662,7 @@ var featuresData = [
     title: 'Mudra Loan',
     subtitle: '',
     content:
-      "Mudra' stands for Micro Units Development and Refinance Agency. These loans were designed to aid the growth and development of small businesses in sectors such as trading, manufacturing, and services. Mudra Loans, an initiative by the Government of India, were introduced to provide financial support to small and micro enterprises.Here are some key features of Mudra Loans in India:<br> > Shishu: For businesses in the initial stages, offering loans up to ₹50,000.<br> > Kishore: For businesses that have expanded and require higher loan amounts, offering loans ranging from ₹50,000 to ₹5 lakhs.<br> > Tarun: For established businesses looking for further expansion, offering loans ranging from ₹5 lakhs to ₹10 lakhs.<br><br>At R1Xchange, we help businesses clearly understand the purpose of the MUDRA loan and how to avail the same through our network of lenders. Apart from counseling , our team of financial experts work with businesses to avail this govt. promoted scheme, whether it's for working capital, purchasing equipment, or any other business need, in aligning the loan with the company's goals.",
+      'MUDRA’ stands for Micro Units Development and Refinance Agency. These loans are designed to support the growth and development of small businesses across sectors such as trading, manufacturing, and services. Introduced by the Government of India, MUDRA Loans provide essential financial assistance to micro and small enterprises. Below are some key features of MUDRA Loans in India:<br> > Shishu: For businesses in their initial stages, offering loans of up to ₹50,000.<br> > Kishore: For growing businesses that require additional funding, offering loans ranging from ₹50,000 to ₹5 lakhs.<br> > Tarun: For well-established businesses seeking further expansion, offering loans ranging from ₹5 lakhs to ₹10 lakhs.<br><br>At 5PointCredit, we assist businesses in clearly understanding the purpose of MUDRA loans and guide them in availing these facilities through our network of lenders. In addition to advisory support, our team of financial experts works closely with businesses to help them access this government-promoted scheme—whether for working capital, equipment purchases, or other operational needs—ensuring that the loan aligns effectively with the company’s goals.',
     secondImage: './assets/img/services-features/MUDRA_LOAN _LADY_MOBILE.jpg',
     buttonId: 'mudraloan',
   },
@@ -685,7 +671,7 @@ var featuresData = [
     title: 'Loan Against Property',
     subtitle: '',
     content:
-      'Loan Against Property (LAP) is a type of secured loan that allows individuals to borrow funds by leveraging their residential or commercial property as collateral. In India, various banks, non-banking financial companies (NBFCs), and financial institutions offer Loan Against Property with attractive interest rates and flexible repayment options. LAP is a great option for people who require a large amount of money but need more assets to pledge as collateral.<br><br>At R1Xchange, we advise borrowers not only on the benefits of using a LAP loan but we also help in assessing the market value of the property, since it would have a direct impact on the loan amount you can qualify for .We help individuals and businesses who require a large amount of money or looking for financial debt consolidation and have more assets to pledge as collateral',
+      'Loan Against Property (LAP) is a type of secured loan that enables individuals to borrow funds by pledging their residential or commercial property as collateral. In India, various banks, non-banking financial companies (NBFCs), and financial institutions offer LAP with competitive interest rates and flexible repayment options. It is an ideal solution for individuals who require a substantial amount of funds and wish to leverage their existing property to meet financial needs.<br><br>At 5PointCredit, we guide borrowers not only on the advantages of availing a Loan Against Property (LAP) but also assist in assessing the market value of the property, as it directly influences the loan amount for which they may qualify. We support individuals and businesses seeking substantial funds or financial debt consolidation, particularly those with assets available to pledge as collateral',
     image: './assets/img/services-features/LOAN_AGNST PROPERTY_LOAN.jpg',
     buttonId: 'loanproperty',
   },
@@ -694,7 +680,7 @@ var featuresData = [
     title: 'Credit Guarantee Fund Scheme for Micro and Small Enterprises',
     subtitle: 'CGTMSE',
     content:
-      'This CGTMSE scheme is designed by govt. of India to provide collateral-free credit to micro and small enterprises upto 500 lakhs. At R1Xchange, we help both new and existing MSME units to avail loans without any collateral or secuity requirement under CGTMSE scheme through our large network of Lenders. ',
+      'The CGTMSE scheme, designed by the Government of India, provides collateral-free credit to micro and small enterprises up to ₹500 lakhs. At 5PointCredit, we assist both new and existing MSME units in accessing loans under the CGTMSE scheme without any collateral or security requirements, leveraging our extensive network of lenders.',
     secondImage:
       './assets/img/services-features/CGTMSE_LOAN _SURD_BIZZPHOTO.jpg ',
     buttonId: 'cgtmse',
@@ -704,7 +690,7 @@ var featuresData = [
     title: 'Overdraft',
     subtitle: '',
     content:
-      'Overdraft facility for businesses is a financial service provided by banks that allows businesses to withdraw more money from their current account than they actually have in it ,up to a certain limit.This facility helps businesses to manage any unforeseen short term financial crises or cash flow gaps.<br><br>This facility is particularly useful for businesses that experience seasonal fluctuations in their cash flows or have occasional short-term funds requirements.<br><br>Our team of financial experts at R1Xchange helps businesses to manage any unforeseen short term financial crises or cash flow gaps through customized and regular overdraft facilities. We work with businesses to assess their eligibility in terms of their credit history , financial stability and other relevant factors so that they can leverage their overdraft facilities to the maximum amount possible. With our large network of banks and Lenders across India , we provide businesses the facility to explore multiple funding options and leverage their business potential to maximize growth.',
+      'Overdraft facility for businesses is a financial service offered by banks that allows businesses to withdraw more funds from their current account than the available balance, up to a specified limit. This facility helps businesses manage unforeseen short-term financial needs or cash flow gaps efficiently.<br><br>This facility is particularly beneficial for businesses experiencing seasonal cash flow fluctuations or occasional short-term funding requirements.<br><br>At 5PointCredit, our team of financial experts helps businesses manage unforeseen short-term financial challenges or cash flow gaps through customized and recurring overdraft facilities. We work closely with businesses to assess eligibility based on credit history, financial stability, and other relevant factors, enabling them to leverage their overdraft facilities to the fullest. With our extensive network of banks and lenders across India, we provide businesses access to multiple funding options, helping them maximize their growth potential.',
     image: './assets/img/services-features/OVERDRAFT_LOAN.jpg',
     buttonId: 'overdraft',
   },
@@ -713,7 +699,7 @@ var featuresData = [
     title: 'Term Loan',
     subtitle: '',
     content:
-      'A term loan refers to a Bank loan for a specific amount that has a specified repayment schedule and a fixed or reducing rate of interest.<br><br>We at R1Xchange , help businesses who are looking for business expansion, meet capital expenditure, or other long-term financing needs with these loans. Apart from helping businesses get access to term loans we also help them in understanding and planning the repayment period for term loan which can vary, typically ranging from one to ten years or more, depending on the specific terms of the loan agreement. Our expertise and timely financial arrangements has helped many businesses get easy availability of term loans to facilitate their growth and expansion, especially small and medium-sized enterprises (SMEs). Additionally, with our network and platform of digital lending , our business customers are delighted with the easy availability of term loans, making the process more convenient and accessible.',
+      'A term loan is a bank loan provided for a specific amount, with a defined repayment schedule and either a fixed or reducing interest rate.<br><br>We at 5PointCredit , help businesses who are looking for business expansion, meet capital expenditure, or other long-term financing needs with these loans. Apart from helping businesses get access to term loans we also help them in understanding and planning the repayment period for term loan which can vary, typically ranging from one to ten years or more, depending on the specific terms of the loan agreement. Our expertise and timely financial arrangements has helped many businesses get easy availability of term loans to facilitate their growth and expansion, especially small and medium-sized enterprises (SMEs). Additionally, with our network and platform of digital lending , our business customers are delighted with the easy availability of term loans, making the process more convenient and accessible.',
     secondImage: './assets/img/services-features/TERM_LOAN_BIZZ_INDIVDUAL.jpg',
     buttonId: 'termloan',
   },
@@ -814,37 +800,37 @@ var portfolioData = [
       {
         title: 'Supply Chain Finance',
         description:
-          'We offer the most affordable and best Supply Chain Finance funding solution for your business where you can get security and collateral-free loan up to 90 days and make easy repayments.',
+          'We provide affordable and efficient Supply Chain Finance solutions for your business, offering collateral-free loans for up to 90 days with flexible and easy repayment options.',
       },
       {
         title: 'MSME Loans',
         description:
-          'This MSME Loan scheme is designed to provide collateral-free credit to micro and small enterprises. Under this scheme, both new and existing MSME units can avail loans up to a certain limit without any collateral or security requirement.',
+          'This MSME Loan scheme is designed to provide collateral-free credit to micro and small enterprises. Under the scheme, both new and existing MSME units can access loans up to a specified limit without any collateral or security requirements.',
       },
       {
         title: 'Business Line of Credit',
         description:
-          'Overdraft and similar credit facility allows borrowers to draw funds as needed up to a predefined credit limit. Interest is only charged on the amount borrowed, making it a flexible solution for managing fluctuating cash flow.',
+          'An overdraft and similar credit facility allows borrowers to draw funds as needed, up to a predefined credit limit. Interest is charged only on the amount utilized, making it a flexible solution for managing fluctuating cash flows.',
       },
       {
         title: 'Working Capital Loans',
         description:
-          'Unsecured working capital loans are specifically designed to cover short-term working capital needs, such as inventory purchase, payroll, or other operational expenses.',
+          'Unsecured working capital loans are specifically designed to meet short-term working capital requirements, such as inventory purchases, payroll, or other operational expenses.',
       },
       {
         title: 'Invoice Financing',
         description:
-          'Invoice financing, or invoice factoring, allows businesses to receive advances on their outstanding invoices. This type of financing is ideal for businesses that experience delays in receiving payments from customers.',
+          'Invoice financing, also known as invoice factoring, enables businesses to receive advances on their outstanding invoices. This type of financing is particularly beneficial for businesses that face delays in receiving payments from customers.',
       },
       {
         title: 'Merchant Cash Advances',
         description:
-          'Merchant cash advances provide businesses with a lump sum amount in exchange for a percentage of daily credit card sales. Repayments are linked to daily sales, making it suitable for businesses with fluctuating revenue.',
+          'Merchant cash advances provide businesses with a lump sum amount in exchange for a percentage of their daily credit card sales. Repayments are tied to daily revenue, making this solution particularly suitable for businesses with fluctuating cash flows.',
       },
       {
         title: 'Business Term Loans',
         description:
-          'This loan provides a lump sum amount for a fixed term to serve various purposes, such as expanding operations, purchasing equipment, or managing short-term cash flow gaps.',
+          'This loan provides a lump sum amount for a fixed term and can be used for various purposes, such as expanding operations, purchasing equipment, or addressing short-term cash flow gaps.',
       },
       // Add more loan items as needed
     ],
@@ -857,27 +843,27 @@ var portfolioData = [
       {
         title: 'Life Insurance',
         description:
-          'LOOKING FOR A Term insurance or a whole life insurance protection, we have it all and that too from different insurance providers.',
+          'Whether you are looking for term insurance or whole life insurance protection, we offer a wide range of options from multiple trusted insurance providers.',
       },
       {
         title: 'Health Insurance',
         description:
-          'Cover your expenses on medical treatment incurred due to any illness or medical emergency through our whole range of health insurance policies.',
+          'Cover your medical expenses arising from illness or emergencies with our comprehensive range of health insurance policies.',
       },
       {
         title: 'Motor Insurance',
         description:
-          'It is mandatory in India to have motor insurance policy for all vehicles operating in public space.',
+          'In India, it is mandatory for all vehicles operating in public spaces to have a motor insurance policy.',
       },
       {
         title: 'MSME Insurance',
         description:
-          'To support and protect Micro, Small, and Medium Enterprises (MSMEs), various insurance products and schemes have been introduced to provide comprehensive coverage for the specific needs and risks faced by these small and medium-sized businesses.',
+          'To support and protect Micro, Small, and Medium Enterprises (MSMEs), various insurance products and schemes have been introduced, offering comprehensive coverage tailored to the specific needs and risks faced by these businesses.',
       },
       {
         title: 'Commercial Vehicle Insurance',
         description:
-          'Commercial vehicle insurance in India provides coverage for vehicles used for commercial purposes. It provides financial protection against various risks and liabilities associated with commercial vehicle operations.',
+          'Commercial vehicle insurance in India offers coverage for vehicles used for business purposes, providing financial protection against various risks and liabilities associated with commercial vehicle operations.',
       },
       // Add more insurance items as needed
     ],
@@ -890,22 +876,22 @@ var portfolioData = [
       {
         title: 'MoneyBack Schemes',
         description:
-          'Money-back policy in India is a type of life insurance policy that provides periodic payments during the term of the policy, apart from the maturity benefit. This policy combines insurance and investment, offering both protection and periodic returns.',
+          'A money-back policy in India is a type of life insurance that provides periodic payouts during the policy term, in addition to the maturity benefit. This policy combines insurance protection with investment, offering both financial security and regular returns. ',
       },
       {
         title: 'Guarantee Income Schemes',
         description:
-          'Guaranteed income plans are a type of life insurance product that combine insurance protection and guaranteed returns. These plans provide policyholders with regular income payouts during the policy term or at maturity.',
+          'Guaranteed income plans are a type of life insurance product that combine insurance protection with guaranteed returns. They provide policyholders with regular income payouts either during the policy term or upon maturity.',
       },
       {
         title: 'Pension & Retirement Plans',
         description:
-          'Pension and retirement plans are designed to help individuals build a corpus for their post-retirement years. These plans offer a combination of savings and investment , providing regular income to support individuals during their retirement years.',
+          'Pension and retirement plans are designed to help individuals build a corpus for their post-retirement years. These plans combine savings and investment, providing a steady income to support individuals throughout their retirement.',
       },
       {
         title: 'Children Plans',
         description:
-          "Looking to secure a child's future, including their education, marriage, and other important life milestones, choose from our wide range of children plans suited to your needs.",
+          'To secure your child’s future—including education, marriage, and other important life milestones—explore our wide range of children’s plans tailored to your needs. ',
       },
       // Add more investment items as needed
     ],
@@ -918,12 +904,12 @@ var portfolioData = [
       {
         title: 'Credit card',
         description:
-          'Credit cards are widely used financial products that provide users with a convenient and secure way to make cashless payments. They offer a line of credit that allows cardholders, whether individuals or businessmen, to make purchases and pay for services, both online and offline, with the flexibility of repaying the amount later.',
+          'Credit cards are widely used financial instruments that offer a convenient and secure way to make cashless payments. They provide a line of credit, allowing cardholders—whether individuals or business professionals—to make purchases and pay for services, both online and offline, with the flexibility of repaying the amount at a later date.',
       },
       {
         title: 'Business Credit card',
         description:
-          'Business credit cards are designed and tailored to the needs of businesses. These cards typically come with features and benefits specifically designed for business expenses and transactions.',
+          'Business credit cards are specifically designed to meet the needs of businesses. They typically offer features and benefits tailored for managing business expenses and transactions efficiently.',
       },
       // Add more credit card items as needed
     ],
@@ -936,7 +922,7 @@ var portfolioData = [
       {
         title: 'Balance Transfer',
         description:
-          'Balance transfer facility on secured loans allows borrowers to transfer the outstanding balance of an existing loan from one financial institution to another, usually to benefit from lower interest rates, better terms, or improved services. This facility is commonly available for various secured loans, including home loans, loan against property, and other secured credit facilities.',
+          'The balance transfer facility for secured loans allows borrowers to transfer the outstanding balance of an existing loan from one financial institution to another, typically to benefit from lower interest rates, improved terms, or enhanced services. This facility is commonly available for various secured loans, including home loans, loans against property, and other secured credit products.',
       },
       // Add more balance transfer items as needed
     ],
@@ -998,8 +984,8 @@ var careerSection = [
   {
     TitleName: 'Career',
     SubtitleName:
-      'COME, JOIN R1Xchange TO LAUNCH THE SUCCESS STORY OF YOUR CAREER AND PROFESSIONAL GROWTH. Please email your resume at',
-    EmailAddress: 'hr@r1xchange.com',
+      'COME, JOIN 5PointCredit TO LAUNCH THE SUCCESS STORY OF YOUR CAREER AND PROFESSIONAL GROWTH. Please email your resume at',
+    EmailAddress: 'hr@5PointCredit.com',
     PlanOfAction: 'https://zfrmz.com/3DDBhNq05jtGAveCO1Hm',
   },
 ]
@@ -1030,7 +1016,7 @@ var faqData = {
       question:
         'I do not have any collateral or security, can I get a loan for business?',
       answer:
-        "You can get a loan even if you do not have collateral. Eligibility criteria for a business loan typically involves factors such as the business's vintage, annual turnover, credit score, profitability, and the industry in which the business operates.",
+        'You can get a loan even without collateral. Eligibility for a business loan typically depends on factors such as the business vintage, annual turnover, credit score, profitability, and the industry in which it operates. ',
     },
     {
       question: 'What all loans are available?',
@@ -1049,7 +1035,7 @@ var faqData = {
       question:
         'What is the Rate of Interest on Loans and from which bank will I get loans?',
       answer:
-        "Interest rate on business loan varies based on the Bank, lender, the business's credit profile, business location and the prevailing market conditions. We have tied up with 100+ lenders and multiple banks through whom we provide business loans based on the requirements.",
+        "Interest rates on business loans vary depending on the bank, lender, the business’s credit profile, location, and prevailing market conditions. At 5PointCredit, we have partnered with over 100 lenders and multiple banks to provide business loans tailored to your specific requirements.",
     },
     // Add more FAQ items as needed
   ],
@@ -1110,7 +1096,7 @@ var testimonialsData = {
       image: './assets/img/testimonials/testimonials-1.jpg',
       rating: 5,
       quote:
-        'R1Xchange suggested me to apply for business loan through Kotak Bank, as they had the best deal for me. I am really happy with the deal amount and rate that I have got. If ever you want to apply for a business loan, do not rethink, just choose R1Xchange, they will get the best financing solution for you.',
+        '5PointCredit suggested me to apply for business loan through Kotak Bank, as they had the best deal for me. I am really happy with the deal amount and rate that I have got. If ever you want to apply for a business loan, do not rethink, just choose 5PointCredit, they will get the best financing solution for you.',
     },
     {
       name: 'Babu K. Sebastian',
@@ -1118,7 +1104,7 @@ var testimonialsData = {
       image: './assets/img/testimonials/testimonials-2.jpg',
       rating: 5,
       quote:
-        'R1Xchange representative have been very patient and helpful throughout my working capital loan request journey. Their personalized advice , streamlined documentation and user friendly approach has made the journey much more easier and convenient for businesses like me.',
+        '5PointCredit representative have been very patient and helpful throughout my working capital loan request journey. Their personalized advice , streamlined documentation and user friendly approach has made the journey much more easier and convenient for businesses like me.',
     },
     {
       name: 'Kunal Gadi',
@@ -1126,7 +1112,7 @@ var testimonialsData = {
       image: 'assets/img/testimonials/testimonials-4.jpg',
       rating: 5,
       quote:
-        'I had a few issues within my CIBIL, some wrong entries were mentioned in my report, I was not able to get a loan for more than 2 years with no luck from any of the several banks I tried with, through a friend I was introduced to the R1Xchange team, they assessed the documents so accurately, and were able to not only diagnose the issues but they were able to provide meaningful solutions in terms of the documents required to prove it was not my fault, through the whole process of applying till sanctions, I trust R1Xchange for all my banking and working capital requirements.',
+        'I had a few issues within my CIBIL, some wrong entries were mentioned in my report, I was not able to get a loan for more than 2 years with no luck from any of the several banks I tried with, through a friend I was introduced to the 5PointCredit team, they assessed the documents so accurately, and were able to not only diagnose the issues but they were able to provide meaningful solutions in terms of the documents required to prove it was not my fault, through the whole process of applying till sanctions, I trust 5PointCredit for all my banking and working capital requirements.',
     },
     {
       name: 'Suraj Bhalla',
@@ -1134,7 +1120,7 @@ var testimonialsData = {
       image: 'assets/img/testimonials/testimonials-3.jpg',
       rating: 5,
       quote:
-        'I had an existing OD with my bank, when new opportunities came my way to expand, I realized  my existing banker had very limited exposure to the various new age products in banking and  how  I could structure my debt funding effectively, hence I wanted an effective solution from the best experts, thankfully I placed my trust with the R1Xchange team, they were so sound and helpful that I had more than what I had asked for in terms of options and funding to choose from multiple banks and Lenders.',
+        'I had an existing OD with my bank, when new opportunities came my way to expand, I realized  my existing banker had very limited exposure to the various new age products in banking and  how  I could structure my debt funding effectively, hence I wanted an effective solution from the best experts, thankfully I placed my trust with the 5PointCredit team, they were so sound and helpful that I had more than what I had asked for in terms of options and funding to choose from multiple banks and Lenders.',
     },
     {
       name: 'Tilak B. Bhujade ',
@@ -1142,7 +1128,7 @@ var testimonialsData = {
       image: 'assets/img/testimonials/testimonials-5.jpg',
       rating: 5,
       quote:
-        'I needed to raise around 30 lacks and by existing bank was not willing to support me on the entire requirement, I approached the R1Xchange team, within 2 days they assessed my documents and were able to precisely share with me the findings, I was surprised when they rolled out the offers from so many lenders many of whose names I had not even heard about, I find them as a one stop solution for all banking needs.',
+        'I needed to raise around 30 lacks and by existing bank was not willing to support me on the entire requirement, I approached the 5PointCredit team, within 2 days they assessed my documents and were able to precisely share with me the findings, I was surprised when they rolled out the offers from so many lenders many of whose names I had not even heard about, I find them as a one stop solution for all banking needs.',
     },
   ],
 }
@@ -1196,7 +1182,7 @@ var contactSections = [
       'Hosur Rd, Kudlu Gate, Srinivasa Nagar, Hal Layout, Singasandra,',
     addressLine2: 'Bengaluru, Karnataka-560068',
     phoneNumber: '+91 9364111656',
-    emailAddress: 'support@r1xchange.com',
+    emailAddress: 'support@5PointCredit.com',
     contactus: 'For Queries related to our Products and Services, ',
     PlanOfAction: 'https://zfrmz.com/NUB9bXeP5vWH6Cx8MjSK',
     hoursLine1: 'Mon - Fri : 10:00 AM - 6:00 PM',
@@ -1357,7 +1343,7 @@ var footerData = {
       'Bengaluru, Karnataka-560068',
     ],
     phone: '+91 9364111656',
-    email: 'support@r1xchange.com',
+    email: 'support@5PointCredit.com',
   },
 }
 // Function to create a list of links
