@@ -208,7 +208,7 @@ var logoImg = document.createElement('img')
 logoImg.src = logoSrc
 logoImg.style.marginLeft = '30px'
 // logoImg.className = 'logo d-flex align-items-center me-auto me-xl-0'
-logoImg.style.height = '110px'
+logoImg.style.height = '80px'
 logoImg.style.marginTop = '10px'
 logoImg.style.marginBottom = '10px'
 // logoImg.style.filter = 'invert(1)'
@@ -222,119 +222,279 @@ document
   .insertBefore(logoImg, document.getElementById('headerContainer').firstChild)
 /*<-- end ======= Header ======= -->*/
 
-/*<-- start ======= Image Slider ======= -->*/
-var sliderImages = [
-  './assets/img/hero-img/hero-img1.jpg',
-  './assets/img/hero-img/hero-img2.jpg',
-  './assets/img/hero-img/hero-img3.jpg',
+/*<-- start ======= Image Slider (Dynamic Text) ======= -->*/
+var sliderData = [
+  {
+    image: './assets/img/hero-img/hero-img1.jpg',
+    title: 'NO CIBIL, LOW CIBIL we can help',
+  },
+  {
+    image: './assets/img/hero-img/hero-img2.jpg',
+    title: 'The happiness we bring is beyond the measure of money',
+  },
+  {
+    image: './assets/img/hero-img/hero-img3.jpg',
+    title: 'The trust of many hands that make us, will never break it',
+  },
+  {
+    image: './assets/img/hero-img/hero-img4.jpg',
+    title: '',
+  },
+  {
+    image: './assets/img/hero-img/hero-img5.jpg',
+    title: 'Homes beyond brick and sand, let us help u get one',
+  },
+  {
+    image: './assets/img/hero-img/hero-img6.jpg',
+    title: 'Your data is our top secret we never share it',
+  },
+  {
+    image: './assets/img/hero-img/hero-img7.jpg',
+    title: 'Here to help when you need us the most',
+  },
 ]
 
 var currentSlideIndex = 0
 var sliderIntervalTime = 5000 // 5 seconds
 var sliderInterval
 
-// Get the necessary DOM elements
-var sliderImgElement = document.getElementById('sliderImage')
+// DOM Elements
+var sliderTrack = document.getElementById('sliderTrack')
+var sliderTitle = document.getElementById('slideTitle')
 var sliderDotsContainer = document.getElementById('sliderDots')
 var prevBtn = document.getElementById('prevBtn')
 var nextBtn = document.getElementById('nextBtn')
 
-if (sliderImgElement) {
-  // 1. Initial setup
-  sliderImgElement.src = sliderImages[currentSlideIndex]
-  createDots()
-  updateActiveDot()
-}
+var totalSlides = sliderData.length
+var isTransitioning = false
 
-// Function to transition to a specific slide index
-function goToSlide(index) {
-  if (index >= 0 && index < sliderImages.length) {
-    currentSlideIndex = index
-    sliderImgElement.src = sliderImages[currentSlideIndex]
-    updateActiveDot()
+// Initialize Slider
+function initSlider() {
+  if (!sliderTrack) return
 
-    // Reset the automatic interval on manual interaction
-    clearInterval(sliderInterval)
-    startSimpleSlider()
-  }
-}
+  // 1. Render Slides with Clones
+  sliderTrack.innerHTML = ''
+  
+  // Clone Last Slide (Prepend)
+  const cloneLast = createSlideItem(sliderData[totalSlides - 1], totalSlides - 1)
+  cloneLast.classList.add('clone')
+  sliderTrack.appendChild(cloneLast)
 
-// Function to move to the next slide
-function nextSlide() {
-  let newIndex = (currentSlideIndex + 1) % sliderImages.length
-  goToSlide(newIndex)
-}
+  // Real Slides
+  sliderData.forEach((slide, index) => {
+    const slideItem = createSlideItem(slide, index)
+    sliderTrack.appendChild(slideItem)
+  })
 
-// Function to move to the previous slide
-function prevSlide() {
-  let newIndex =
-    (currentSlideIndex - 1 + sliderImages.length) % sliderImages.length
-  goToSlide(newIndex)
-}
+  // Clone First Slide (Append)
+  const cloneFirst = createSlideItem(sliderData[0], 0)
+  cloneFirst.classList.add('clone')
+  sliderTrack.appendChild(cloneFirst)
 
-// Function to create pagination dots
-function createDots() {
-  if (!sliderDotsContainer) return
-
-  sliderDotsContainer.innerHTML = '' // Clear existing dots
-
-  sliderImages.forEach((_, index) => {
-    const dot = document.createElement('span')
-    dot.classList.add('dot')
-    dot.setAttribute('data-index', index)
-
-    // Add click listener to jump to the corresponding slide
-    dot.addEventListener('click', function () {
-      goToSlide(parseInt(this.getAttribute('data-index')))
+  // 2. Render Dots
+  if (sliderDotsContainer) {
+    sliderDotsContainer.innerHTML = ''
+    sliderData.forEach((_, index) => {
+      const dot = document.createElement('div')
+      dot.className = 'dot'
+      if (index === 0) dot.classList.add('active')
+      dot.onclick = () => {
+        if (isTransitioning) return
+        goToSlide(index)
+      }
+      sliderDotsContainer.appendChild(dot)
     })
+  }
 
-    sliderDotsContainer.appendChild(dot)
-  })
+  // 3. Set Initial State (Offset by 1 to show first real slide)
+  updateTrackPosition(currentSlideIndex + 1, false)
+  updateActiveClasses(currentSlideIndex)
+  updateTitle(currentSlideIndex)
+  
+  // 4. Add Transition End Listener for Infinite Loop
+  sliderTrack.addEventListener('transitionend', handleTransitionEnd)
+
+  startAutoPlay()
 }
 
-// Function to highlight the currently active dot
-function updateActiveDot() {
-  if (!sliderDotsContainer) return
+function createSlideItem(slide, index) {
+    const slideItem = document.createElement('div')
+    slideItem.className = 'slide-item'
+    slideItem.setAttribute('data-index', index)
+    
+    const img = document.createElement('img')
+    img.src = slide.image
+    img.alt = slide.title || 'Slide Image'
+    img.loading = index < 2 ? 'eager' : 'lazy' // Optimize loading
+    
+    slideItem.appendChild(img)
+    return slideItem
+}
 
-  // Remove 'active' class from all dots
-  document.querySelectorAll('.dot').forEach((dot) => {
-    dot.classList.remove('active')
-  })
+// Update Track Position
+function updateTrackPosition(positionIndex, animate = true) {
+  if (!sliderTrack) return
+  
+  if (animate) {
+    // Default transition, overridden by dynamic logic if needed
+    sliderTrack.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
+  } else {
+    sliderTrack.style.transition = 'none'
+  }
+  
+  const translateX = -(positionIndex * 100)
+  sliderTrack.style.transform = `translateX(${translateX}%)`
+}
 
-  // Add 'active' class to the current dot
-  const activeDot = sliderDotsContainer.querySelector(
-    `[data-index="${currentSlideIndex}"]`
-  )
-  if (activeDot) {
-    activeDot.classList.add('active')
+function updateActiveClasses(index) {
+    // Update Slides Opacity
+    const items = sliderTrack.children
+    // items[0] is cloneLast, items[1] is real 0
+    // Real index i corresponds to items[i+1]
+    
+    for (let i = 0; i < items.length; i++) {
+        items[i].classList.remove('active')
+    }
+    // Active is the one currently viewed
+    // If we are at real index `index`, we are at items[index+1]
+    if (items[index + 1]) items[index + 1].classList.add('active')
+
+    // Update Dots
+    if (sliderDotsContainer) {
+        const dots = sliderDotsContainer.children
+        for (let i = 0; i < dots.length; i++) {
+            if (i === index) dots[i].classList.add('active')
+            else dots[i].classList.remove('active')
+        }
+    }
+}
+
+function updateTitle(index) {
+  if (!sliderTitle) return
+  
+  sliderTitle.classList.remove('animate-in')
+  
+  setTimeout(() => {
+    sliderTitle.innerText = sliderData[index].title
+    if (sliderData[index].title) {
+        sliderTitle.classList.add('animate-in')
+        sliderTitle.style.display = 'block'
+    } else {
+        sliderTitle.style.display = 'none'
+    }
+  }, 50)
+}
+
+// We need a better state management for the infinite loop
+var visualIndex = 1 // Starts at 1 (First Real Slide)
+
+function handleTransitionEnd() {
+  isTransitioning = false
+  
+  // Snap Back Logic
+  // If we are at Clone First (visualIndex = totalSlides + 1)
+  if (visualIndex === totalSlides + 1) {
+      visualIndex = 1 // Snap to Real First
+      updateTrackPosition(visualIndex, false) // No animation
+      updateActiveClasses(0)
+  }
+  
+  // If we are at Clone Last (visualIndex = 0)
+  if (visualIndex === 0) {
+      visualIndex = totalSlides // Snap to Real Last
+      updateTrackPosition(visualIndex, false) // No animation
+      updateActiveClasses(totalSlides - 1)
   }
 }
 
-// Function to start the automatic rotation
-function startSimpleSlider() {
-  if (!sliderImgElement) {
-    console.error('Slider image element not found.')
-    return
-  }
+function goToSlide(targetIndex) {
+    if (isTransitioning) return
+    isTransitioning = true
 
-  // Clear any existing interval before starting a new one
-  if (sliderInterval) {
-    clearInterval(sliderInterval)
-  }
+    // Calculate distance for duration adjustment
+    const diff = Math.abs(currentSlideIndex - targetIndex)
+    // Slower for longer distances, but cap it
+    const duration = diff > 1 ? 0.4 + (0.08 * diff) : 0.5
+    if (sliderTrack) sliderTrack.style.transitionDuration = `${Math.min(duration, 1.2)}s`
 
+    currentSlideIndex = targetIndex
+    visualIndex = currentSlideIndex + 1
+    
+    updateTrackPosition(visualIndex, true)
+    updateActiveClasses(currentSlideIndex)
+    updateTitle(currentSlideIndex)
+    
+    startAutoPlay()
+}
+
+function nextSlide() {
+    if (isTransitioning) return
+    isTransitioning = true
+    
+    if (sliderTrack) sliderTrack.style.transitionDuration = '0.5s'
+
+    // If at last slide, go to Clone First
+    if (currentSlideIndex === totalSlides - 1) {
+        currentSlideIndex = 0
+        visualIndex = totalSlides + 1 // Position of Clone First
+        
+        updateTrackPosition(visualIndex, true)
+        // We don't update active classes yet to keep the "last" slide active during transition?
+        // No, usually we want to show the new state.
+        // But for clones, the clone IS the new state visually.
+        // Let's update active classes to the NEW index (0)
+        updateActiveClasses(0) 
+        updateTitle(0)
+    } else {
+        currentSlideIndex++
+        visualIndex++
+        updateTrackPosition(visualIndex, true)
+        updateActiveClasses(currentSlideIndex)
+        updateTitle(currentSlideIndex)
+    }
+    startAutoPlay()
+}
+
+function prevSlide() {
+    if (isTransitioning) return
+    isTransitioning = true
+    
+    if (sliderTrack) sliderTrack.style.transitionDuration = '0.5s'
+
+    // If at first slide, go to Clone Last
+    if (currentSlideIndex === 0) {
+        currentSlideIndex = totalSlides - 1
+        visualIndex = 0 // Position of Clone Last
+        
+        updateTrackPosition(visualIndex, true)
+        updateActiveClasses(totalSlides - 1)
+        updateTitle(totalSlides - 1)
+    } else {
+        currentSlideIndex--
+        visualIndex--
+        updateTrackPosition(visualIndex, true)
+        updateActiveClasses(currentSlideIndex)
+        updateTitle(currentSlideIndex)
+    }
+    startAutoPlay()
+}
+
+// Auto Play
+function startAutoPlay() {
+  if (sliderInterval) clearInterval(sliderInterval)
   sliderInterval = setInterval(nextSlide, sliderIntervalTime)
 }
 
-// 2. Add event listeners for arrows
-if (prevBtn) {
-  prevBtn.addEventListener('click', prevSlide)
-}
-if (nextBtn) {
-  nextBtn.addEventListener('click', nextSlide)
-}
+// Event Listeners
+if (prevBtn) prevBtn.addEventListener('click', () => {
+    prevSlide()
+})
+if (nextBtn) nextBtn.addEventListener('click', () => {
+    nextSlide()
+})
 
-// Start the automatic rotation when the page loads
-startSimpleSlider()
+// Start
+initSlider()
 /*<-- end ======= Image Slider ======= -->*/
 
 /*<-- start ======= About Us ======= -->*/
@@ -393,7 +553,7 @@ function setAboutUsContent(data) {
     iconBox.setAttribute('data-aos-delay', box.delay || '200') // Set a default delay if not provided
 
     var boxContent = `
-        <div class="icon-box">
+        <div class="icon-box" style="color: #000000;">
           <i class="${box.iconClass}"></i>
           <h3>${box.title}</h3>
           <p>${box.description}</p>
@@ -1035,7 +1195,7 @@ var faqData = {
       question:
         'What is the Rate of Interest on Loans and from which bank will I get loans?',
       answer:
-        "Interest rates on business loans vary depending on the bank, lender, the business’s credit profile, location, and prevailing market conditions. At 5PointCredit, we have partnered with over 100 lenders and multiple banks to provide business loans tailored to your specific requirements.",
+        'Interest rates on business loans vary depending on the bank, lender, the business’s credit profile, location, and prevailing market conditions. At 5PointCredit, we have partnered with over 100 lenders and multiple banks to provide business loans tailored to your specific requirements.',
     },
     // Add more FAQ items as needed
   ],

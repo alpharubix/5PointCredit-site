@@ -1,4 +1,3 @@
-/* Fonts */
 
 :root {
   --default-font: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto,
@@ -7,8 +6,6 @@
   --heading-font: 'Montserrat', sans-serif;
   --nav-font: 'Lato', sans-serif;
 }
-
-/* Global Colors */
 
 :root {
   --background-color: #ffffff;
@@ -114,60 +111,167 @@ section {
 .home {
   position: relative;
 }
+/* Slider Container */
+.slider-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  background-color: #000;
+}
 
-/* Styles for Arrows */
+/* Viewport & Track */
+.slider-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  will-change: transform;
+  /* Base transition, will be overridden by JS for dynamic control */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+/* Individual Slide */
+.slide-item {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  backface-visibility: hidden; /* Performance boost */
+  transform: translateZ(0); /* Trigger GPU */
+}
+
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+  opacity: 0.4; /* Inactive state */
+}
+
+.slide-item.active img {
+  opacity: 1; /* Active state */
+}
+
+/* Title Overlay */
+.slider-title-wrapper {
+  position: absolute;
+  bottom: 15%; /* Adjust as needed */
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  pointer-events: none; /* Let clicks pass through */
+  display: flex;
+  justify-content: center;
+}
+
+.slider-title-container {
+  overflow: hidden; /* Mask for slide-up effect */
+}
+
+.slider-title {
+  color: white;
+  background-color: #000080ff;
+  padding: 10px 20px;
+  font-size: 3rem; /* Adjust size */
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+.slider-title.animate-in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Controls (Arrows) */
 .slider-controls {
   position: absolute;
-  top: 60%; /* Center vertically */
+  top: 50%;
   left: 0;
   right: 0;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 30;
   display: flex;
   justify-content: space-between;
-  padding: 0 20px; /* Padding from the screen edges */
+  padding: 0 20px;
+  pointer-events: none; /* Let clicks pass through container */
 }
 
 .slider-arrow {
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  color: white;
+  pointer-events: auto;
+  background: white;
+  color: black;
   border: none;
-  padding: 10px 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-size: 24px;
-  transition: 0.3s;
-  border-radius: 5px;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.2s;
+  font-size: 20px;
 }
 
 .slider-arrow:hover {
-  background: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  transform: scale(1.1);
 }
 
-/* Styles for Dots/Pagination */
+/* Dots/Pagination */
 .slider-pagination {
   position: absolute;
-  bottom: 20px; /* Position at the bottom of the hero section */
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
+  z-index: 25;
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .slider-pagination .dot {
   height: 12px;
   width: 12px;
-  margin: 0 2px;
-  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  display: inline-block;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
 
-.slider-pagination .dot.active,
 .slider-pagination .dot:hover {
-  background-color: var(--primary-color, #72bf58ff); /* Use your primary color */
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.slider-pagination .dot.active {
+  background-color: #72bf58ff; /* Primary color */
+  transform: scale(1.2);
+  border-color: white;
+}
+
+/* Responsive Text */
+@media (max-width: 768px) {
+  .slider-title {
+    font-size: 1.5rem;
+  }
 }
 
 .section-title {
@@ -862,9 +966,10 @@ section {
   /* --background-color: #000000; */
   --background-color-rgb: 0, 0, 0;
   width: 100%;
-  min-height: 80vh;
+  height: 100vh;
   position: relative;
-  padding: 0px;
+  overflow: hidden; /* Hides parts of image that don't fit */
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -875,9 +980,9 @@ section {
   inset: 0;
   display: block;
   width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
+  height: 100%; /* Changed from auto to 100% to fill the height */
+  object-fit: cover; /* Changed from contain to cover */
+  margin-top: 0px; /* Removed 50px margin to prevent gaps */
   z-index: 1;
 }
 
@@ -938,12 +1043,107 @@ section {
   background-color: rgba(var(--primary-color-rgb), 0.9);
 }
 
+.home .slider-content {
+  position: absolute;
+  top: 75%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  text-align: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.home .slider-content h2 {
+  background-color: #000080ff;
+  color: #ffffff;
+  font-size: 58px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  */
+}
+
+.home .btn-get-started {
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 40px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  background: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.home .btn-get-started:hover {
+  background: transparent;
+  color: var(--primary-color);
+}
+
+/* Styling for the new Top-Right Hero Logo */
+.hero-corner-logo {
+  position: absolute; 
+  top: 30px; /* Distance from the top edge */
+  right: 30px; /* Distance from the right edge */
+  z-index: 20; /* High number to ensure it sits ON TOP of the slider images */
+  width: 150px; /* Adjust the size as needed */
+  height: auto; /* Maintains aspect ratio */
+}
+
+.home .hero-corner-logo {
+  width: 150px !important; /* Stops it from being 100% width */
+  height: auto !important; /* Maintains aspect ratio */
+
+  position: absolute !important;
+  top: 100px !important; /* Positions it 30px from top */
+
+  /* These unset the "inset: 0" that was stretching it */
+  left: auto !important;
+  bottom: auto !important;
+
+  z-index: 20 !important; /* Ensures it sits above slider but below header (997) */
+  object-fit: contain !important; /* Prevents cropping */
+}
+
+/* Optional: Make it smaller on mobile */
+@media (max-width: 768px) {
+  .home .hero-corner-logo {
+    width: 80px !important;
+    top: 85px !important;
+  }
+}
+
+/* Optional: Adjust size for Mobile screens so it doesn't look too big */
+@media (max-width: 768px) {
+  .hero-corner-logo {
+    width: 80px; /* Smaller size for mobile */
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home .slider-content h2 {
+    font-size: 20px;
+  }
+  .home .slider-content p {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .home h2 {
     font-size: 32px;
   }
   .home p {
     font-size: 18px;
+  }
+  .home {
+    margin-top: 30px;
+    height: 50vh; /* Reduce height on mobile phones */
+    min-height: 400px; /* Ensure it doesn't get too small */
   }
 }
 
@@ -2967,7 +3167,7 @@ section {
 @media (min-width: 768px) {
   #menuList a {
     color: #f0f0f0 !important;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   #menuList a.active {
     color: #72bf58ff !important;
