@@ -255,7 +255,7 @@ var sliderData = [
 ]
 
 var currentSlideIndex = 0
-var sliderIntervalTime = 5000 // 5 seconds
+var sliderIntervalTime = 10000 // 5 seconds
 var sliderInterval
 
 // DOM Elements

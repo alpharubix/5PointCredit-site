@@ -114,7 +114,7 @@ section {
 /* Slider Container */
 .slider-container {
   position: relative;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1059,7 +1059,6 @@ section {
   font-size: 58px;
   font-weight: 700;
   margin-bottom: 20px;
-  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  */
 }
 
 .home .btn-get-started {
