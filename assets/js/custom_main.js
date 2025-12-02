@@ -1,5 +1,5 @@
 /*<-- start ======= Header ======= -->*/
-var logoHref = './index.html'
+var logoHref = '#'
 var logoSrc = './assets/img/logo.svg'
 
 var loginText = 'Login'
@@ -203,7 +203,8 @@ generateMenu(menuItems, menuList)
 var logoLink = document.createElement('a')
 logoLink.href = logoHref
 logoLink.className = 'logo d-flex align-items-center me-auto me-xl-0'
-logoLink.style.height = '20px'
+logoLink.style.height = '100px'
+logoLink.style.cursor = 'pointer'
 var logoImg = document.createElement('img')
 logoImg.src = logoSrc
 logoImg.style.marginLeft = '30px'
@@ -219,7 +220,7 @@ logoLink.appendChild(logoImg)
 // Append logo to the container
 document
   .getElementById('headerContainer')
-  .insertBefore(logoImg, document.getElementById('headerContainer').firstChild)
+  .insertBefore(logoLink, document.getElementById('headerContainer').firstChild)
 /*<-- end ======= Header ======= -->*/
 
 /*<-- start ======= Image Slider (Dynamic Text) ======= -->*/
@@ -255,7 +256,7 @@ var sliderData = [
 ]
 
 var currentSlideIndex = 0
-var sliderIntervalTime = 10000 // 5 seconds
+var sliderIntervalTime = 3000 // 5 seconds
 var sliderInterval
 
 // DOM Elements

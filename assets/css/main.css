@@ -168,7 +168,7 @@ section {
 /* Title Overlay */
 .slider-title-wrapper {
   position: absolute;
-  bottom: 15%; /* Adjust as needed */
+  bottom: 15%; 
   left: 0;
   width: 100%;
   z-index: 20;
@@ -185,8 +185,7 @@ section {
   color: white;
   background-color: #000080ff;
   padding: 10px 20px;
-  font-size: 100px;
-  font-weight: bold;
+  font-weight: bolder;
   text-align: center;
   margin: 0;
   transform: translateY(100%);
@@ -270,7 +269,7 @@ section {
 /* Responsive Text */
 @media (max-width: 768px) {
   .slider-title {
-    font-size: 1.5rem;
+    font-size: 20px !important;
   }
 }
 
