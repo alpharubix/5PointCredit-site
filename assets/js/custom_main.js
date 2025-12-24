@@ -227,15 +227,15 @@ document
 var sliderData = [
   {
     image: './assets/img/hero-img/hero-img1.jpg',
-    title: 'NO CIBIL, LOW CIBIL we can help',
+    title: "No CIBIL? Low CIBIL? We’ve Got a Solution",
   },
   {
     image: './assets/img/hero-img/hero-img2.jpg',
-    title: 'The happiness we bring is beyond the measure of money',
+    title: 'More Than Money. We Empower Dreams — Disbursements in 48 Hrs',
   },
   {
     image: './assets/img/hero-img/hero-img3.jpg',
-    title: 'The trust of many hands that make us, will never break it',
+    title: 'Trusted by Millions. Powered by 170+ Lenders',
   },
   {
     image: './assets/img/hero-img/hero-img4.jpg',
@@ -243,15 +243,15 @@ var sliderData = [
   },
   {
     image: './assets/img/hero-img/hero-img5.jpg',
-    title: 'Homes beyond brick and sand, let us help u get one',
+    title: 'Smart Home Loans. Easy Balance Transfers Starting at 7.99% p.a',
   },
   {
     image: './assets/img/hero-img/hero-img6.jpg',
-    title: 'Your data is our top secret we never share it',
+    title: 'Your Data. Fully Secure. Always Confidential',
   },
   {
     image: './assets/img/hero-img/hero-img7.jpg',
-    title: 'Here to help when you need us the most',
+    title: 'One Platform. 170+ Lenders. Endless Possibilities',
   },
 ]
 
@@ -275,7 +275,7 @@ function initSlider() {
 
   // 1. Render Slides with Clones
   sliderTrack.innerHTML = ''
-  
+
   // Clone Last Slide (Prepend)
   const cloneLast = createSlideItem(sliderData[totalSlides - 1], totalSlides - 1)
   cloneLast.classList.add('clone')
@@ -311,7 +311,7 @@ function initSlider() {
   updateTrackPosition(currentSlideIndex + 1, false)
   updateActiveClasses(currentSlideIndex)
   updateTitle(currentSlideIndex)
-  
+
   // 4. Add Transition End Listener for Infinite Loop
   sliderTrack.addEventListener('transitionend', handleTransitionEnd)
 
@@ -319,69 +319,69 @@ function initSlider() {
 }
 
 function createSlideItem(slide, index) {
-    const slideItem = document.createElement('div')
-    slideItem.className = 'slide-item'
-    slideItem.setAttribute('data-index', index)
-    
-    const img = document.createElement('img')
-    img.src = slide.image
-    img.alt = slide.title || 'Slide Image'
-    img.loading = index < 2 ? 'eager' : 'lazy' // Optimize loading
-    
-    slideItem.appendChild(img)
-    return slideItem
+  const slideItem = document.createElement('div')
+  slideItem.className = 'slide-item'
+  slideItem.setAttribute('data-index', index)
+
+  const img = document.createElement('img')
+  img.src = slide.image
+  img.alt = slide.title || 'Slide Image'
+  img.loading = index < 2 ? 'eager' : 'lazy' // Optimize loading
+
+  slideItem.appendChild(img)
+  return slideItem
 }
 
 // Update Track Position
 function updateTrackPosition(positionIndex, animate = true) {
   if (!sliderTrack) return
-  
+
   if (animate) {
     // Default transition, overridden by dynamic logic if needed
     sliderTrack.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
   } else {
     sliderTrack.style.transition = 'none'
   }
-  
+
   const translateX = -(positionIndex * 100)
   sliderTrack.style.transform = `translateX(${translateX}%)`
 }
 
 function updateActiveClasses(index) {
-    // Update Slides Opacity
-    const items = sliderTrack.children
-    // items[0] is cloneLast, items[1] is real 0
-    // Real index i corresponds to items[i+1]
-    
-    for (let i = 0; i < items.length; i++) {
-        items[i].classList.remove('active')
-    }
-    // Active is the one currently viewed
-    // If we are at real index `index`, we are at items[index+1]
-    if (items[index + 1]) items[index + 1].classList.add('active')
+  // Update Slides Opacity
+  const items = sliderTrack.children
+  // items[0] is cloneLast, items[1] is real 0
+  // Real index i corresponds to items[i+1]
 
-    // Update Dots
-    if (sliderDotsContainer) {
-        const dots = sliderDotsContainer.children
-        for (let i = 0; i < dots.length; i++) {
-            if (i === index) dots[i].classList.add('active')
-            else dots[i].classList.remove('active')
-        }
+  for (let i = 0; i < items.length; i++) {
+    items[i].classList.remove('active')
+  }
+  // Active is the one currently viewed
+  // If we are at real index `index`, we are at items[index+1]
+  if (items[index + 1]) items[index + 1].classList.add('active')
+
+  // Update Dots
+  if (sliderDotsContainer) {
+    const dots = sliderDotsContainer.children
+    for (let i = 0; i < dots.length; i++) {
+      if (i === index) dots[i].classList.add('active')
+      else dots[i].classList.remove('active')
     }
+  }
 }
 
 function updateTitle(index) {
   if (!sliderTitle) return
-  
+
   sliderTitle.classList.remove('animate-in')
-  
+
   setTimeout(() => {
     sliderTitle.innerText = sliderData[index].title
     if (sliderData[index].title) {
-        sliderTitle.classList.add('animate-in')
-        sliderTitle.style.display = 'block'
+      sliderTitle.classList.add('animate-in')
+      sliderTitle.style.display = 'block'
     } else {
-        sliderTitle.style.display = 'none'
+      sliderTitle.style.display = 'none'
     }
   }, 50)
 }
@@ -391,93 +391,93 @@ var visualIndex = 1 // Starts at 1 (First Real Slide)
 
 function handleTransitionEnd() {
   isTransitioning = false
-  
+
   // Snap Back Logic
   // If we are at Clone First (visualIndex = totalSlides + 1)
   if (visualIndex === totalSlides + 1) {
-      visualIndex = 1 // Snap to Real First
-      updateTrackPosition(visualIndex, false) // No animation
-      updateActiveClasses(0)
+    visualIndex = 1 // Snap to Real First
+    updateTrackPosition(visualIndex, false) // No animation
+    updateActiveClasses(0)
   }
-  
+
   // If we are at Clone Last (visualIndex = 0)
   if (visualIndex === 0) {
-      visualIndex = totalSlides // Snap to Real Last
-      updateTrackPosition(visualIndex, false) // No animation
-      updateActiveClasses(totalSlides - 1)
+    visualIndex = totalSlides // Snap to Real Last
+    updateTrackPosition(visualIndex, false) // No animation
+    updateActiveClasses(totalSlides - 1)
   }
 }
 
 function goToSlide(targetIndex) {
-    if (isTransitioning) return
-    isTransitioning = true
+  if (isTransitioning) return
+  isTransitioning = true
 
-    // Calculate distance for duration adjustment
-    const diff = Math.abs(currentSlideIndex - targetIndex)
-    // Slower for longer distances, but cap it
-    const duration = diff > 1 ? 0.4 + (0.08 * diff) : 0.5
-    if (sliderTrack) sliderTrack.style.transitionDuration = `${Math.min(duration, 1.2)}s`
+  // Calculate distance for duration adjustment
+  const diff = Math.abs(currentSlideIndex - targetIndex)
+  // Slower for longer distances, but cap it
+  const duration = diff > 1 ? 0.4 + (0.08 * diff) : 0.5
+  if (sliderTrack) sliderTrack.style.transitionDuration = `${Math.min(duration, 1.2)}s`
 
-    currentSlideIndex = targetIndex
-    visualIndex = currentSlideIndex + 1
-    
-    updateTrackPosition(visualIndex, true)
-    updateActiveClasses(currentSlideIndex)
-    updateTitle(currentSlideIndex)
-    
-    startAutoPlay()
+  currentSlideIndex = targetIndex
+  visualIndex = currentSlideIndex + 1
+
+  updateTrackPosition(visualIndex, true)
+  updateActiveClasses(currentSlideIndex)
+  updateTitle(currentSlideIndex)
+
+  startAutoPlay()
 }
 
 function nextSlide() {
-    if (isTransitioning) return
-    isTransitioning = true
-    
-    if (sliderTrack) sliderTrack.style.transitionDuration = '0.5s'
+  if (isTransitioning) return
+  isTransitioning = true
 
-    // If at last slide, go to Clone First
-    if (currentSlideIndex === totalSlides - 1) {
-        currentSlideIndex = 0
-        visualIndex = totalSlides + 1 // Position of Clone First
-        
-        updateTrackPosition(visualIndex, true)
-        // We don't update active classes yet to keep the "last" slide active during transition?
-        // No, usually we want to show the new state.
-        // But for clones, the clone IS the new state visually.
-        // Let's update active classes to the NEW index (0)
-        updateActiveClasses(0) 
-        updateTitle(0)
-    } else {
-        currentSlideIndex++
-        visualIndex++
-        updateTrackPosition(visualIndex, true)
-        updateActiveClasses(currentSlideIndex)
-        updateTitle(currentSlideIndex)
-    }
-    startAutoPlay()
+  if (sliderTrack) sliderTrack.style.transitionDuration = '0.5s'
+
+  // If at last slide, go to Clone First
+  if (currentSlideIndex === totalSlides - 1) {
+    currentSlideIndex = 0
+    visualIndex = totalSlides + 1 // Position of Clone First
+
+    updateTrackPosition(visualIndex, true)
+    // We don't update active classes yet to keep the "last" slide active during transition?
+    // No, usually we want to show the new state.
+    // But for clones, the clone IS the new state visually.
+    // Let's update active classes to the NEW index (0)
+    updateActiveClasses(0)
+    updateTitle(0)
+  } else {
+    currentSlideIndex++
+    visualIndex++
+    updateTrackPosition(visualIndex, true)
+    updateActiveClasses(currentSlideIndex)
+    updateTitle(currentSlideIndex)
+  }
+  startAutoPlay()
 }
 
 function prevSlide() {
-    if (isTransitioning) return
-    isTransitioning = true
-    
-    if (sliderTrack) sliderTrack.style.transitionDuration = '0.5s'
+  if (isTransitioning) return
+  isTransitioning = true
 
-    // If at first slide, go to Clone Last
-    if (currentSlideIndex === 0) {
-        currentSlideIndex = totalSlides - 1
-        visualIndex = 0 // Position of Clone Last
-        
-        updateTrackPosition(visualIndex, true)
-        updateActiveClasses(totalSlides - 1)
-        updateTitle(totalSlides - 1)
-    } else {
-        currentSlideIndex--
-        visualIndex--
-        updateTrackPosition(visualIndex, true)
-        updateActiveClasses(currentSlideIndex)
-        updateTitle(currentSlideIndex)
-    }
-    startAutoPlay()
+  if (sliderTrack) sliderTrack.style.transitionDuration = '0.5s'
+
+  // If at first slide, go to Clone Last
+  if (currentSlideIndex === 0) {
+    currentSlideIndex = totalSlides - 1
+    visualIndex = 0 // Position of Clone Last
+
+    updateTrackPosition(visualIndex, true)
+    updateActiveClasses(totalSlides - 1)
+    updateTitle(totalSlides - 1)
+  } else {
+    currentSlideIndex--
+    visualIndex--
+    updateTrackPosition(visualIndex, true)
+    updateActiveClasses(currentSlideIndex)
+    updateTitle(currentSlideIndex)
+  }
+  startAutoPlay()
 }
 
 // Auto Play
@@ -488,10 +488,10 @@ function startAutoPlay() {
 
 // Event Listeners
 if (prevBtn) prevBtn.addEventListener('click', () => {
-    prevSlide()
+  prevSlide()
 })
 if (nextBtn) nextBtn.addEventListener('click', () => {
-    nextSlide()
+  nextSlide()
 })
 
 // Start
@@ -504,21 +504,21 @@ var aboutUsData = {
   SubtitleName: 'Who We Are:',
   PlanOfAction: '#contact',
   aboutUsDescription:
-    '5PointCredit is a leading banking finance and technology company with more than 10 years of experience in the Banking Lending and Financial Services Business. ',
+    '5PointCredit is a leading banking, finance, and technology company with over a decade of proven experience in the banking, lending, and financial services industry. Over the years, we have built deep expertise and strong relationships across banks, NBFCs, and financial institutions, enabling us to understand the evolving credit needs of individuals and businesses across sectors.',
   additionalInfo:
-    'Additionally, we pre-underwrite your financial and tax documents and enable you to get access to the right set of lenders offering you the cheapest and easiest credit solutions to suit all your personal and business requirements. ',
+    'We go beyond traditional loan facilitation by pre-underwriting your financial, tax, business documents, fixing your CIBIL & repayment track issues, correcting any incorrect reporting by lenders to CIBIL and ensuring that your profile is accurately assessed and positioned before it reaches lenders. This structured approach not only improves approval chances but also reduces turnaround time and eliminates unnecessary friction in the borrowing process.<br>By leveraging advanced AI technology and data-driven insights, we connect you with the most suitable set of lenders, offering access to the most competitive interest rates, flexible terms, and simplified credit solutions. Whether your requirements are personal or business-related—working capital, growth financing, or structured lending—we help you secure the cheapest, easiest, and most efficient credit solutions tailored to your needs, all under one trusted platform.<br/>',
   iconBoxes: [
     {
       iconClass: 'bi bi-cash-coin',
       title: 'How we matter?',
       description:
-        'Here at 5PointCredit we want to make sure that all key business loan offerings and working capital products across banks are available under a single roof with the click of a button, so that you can focus on the most important aspect of running your business while we help you manage your banking financials.',
+        'At 5PointCredit, we ensure that a comprehensive range of business loan and working capital products across leading banks is available under a single roof—accessible with just a click. This allows you to focus on what matters most: running and growing your business, while we take care of managing your banking and financial needs.',
     },
     {
       iconClass: 'bi bi-person-lines-fill',
       title: 'Mission Statement',
       description:
-        'Our mission is to empower businesses with seamless access to financial opportunities through innovative lending solutions. We are committed to leveraging technology to simplify the borrowing process, foster financial inclusion, and drive economic growth by providing accessible and transparent lending services.<br>',
+        'Our mission is to empower businesses with seamless access to financial opportunities through innovative lending solutions. By leveraging technology, we simplify the borrowing process, promote financial inclusion, and drive economic growth through accessible, transparent, and reliable lending services.',
     },
     {
       iconClass: 'bi bi-briefcase',
@@ -575,15 +575,15 @@ var statsData = {
   TitleName: 'How Are We Unique?',
   SubtitleName: 'Our Moat',
   Description:
-    '5PointCredit is a leading banking finance and technology company that will pre- underwrite your financial and tax documents and enable you to get access to the right set of lenders offering you the cheapest and easiest credit solutions to suit all your personal and business requirements . We have a whole host of financial and banking products to suit every single business ranging from supply chain finance, overdraft lines, business term loans, inventory finance and revenue based funding.',
+    'Unlike traditional loan facilitators, we go beyond sourcing credit. We help you assess and analyse your credit report, identify discrepancies, and correct inaccurate or adverse reporting in CIBIL. Our team supports you in improving your credit profile, renegotiating lending terms with existing lenders, and structuring timely repayment strategies to strengthen your long-term creditworthiness. For customers facing repayment challenges, we provide structured settlement and resolution support with lenders—aimed at minimising negative impact on your credit score wherever possible. Once your credit profile is corrected, we enable you to access a curated list of lenders that are actively willing to fund you, increasing approval certainty and reducing turnaround time.We also assist with balance transfers on existing loans, helping you switch to better interest rates and terms, resulting in significant interest cost savings. Through our extensive network of hundreds of banks, NBFCs, and financial institutions, we provide complete visibility into available lending options, rates, and structures across the market.In essence, 5PointCredit acts as your dedicated banking and borrowing advisor, helping you not only secure funding but also manage, optimise, and grow your banking profile over time. Backed by the trust of thousands of successfully funded customers and hundreds of lending partners, we are committed to delivering transparent, reliable, and outcome-driven financial solutions.',
   BackgroundImage: './assets/img/stats-bg.jpg',
-  ListItems: [
-    'Deep banking expertise & Financial guidance',
-    'Multiple Banks and Lenders',
-    'Credit assessment & Fitment',
-    'Sanctions & Approvals',
-    'End to End Support from Loan Request To Loan Disbursal',
-  ],
+  // ListItems: [
+  //   'Deep banking expertise & Financial guidance',
+  //   'Multiple Banks and Lenders',
+  //   'Credit assessment & Fitment',
+  //   'Sanctions & Approvals',
+  //   'End to End Support from Loan Request To Loan Disbursal',
+  // ],
   StatsItems: [
     {
       label: 'Distributors',
@@ -610,27 +610,29 @@ function setStatsContent(data) {
   document.getElementById('statsDescription').innerHTML = data.Description
 
   // Set list items
-  var statsList = document.getElementById('statsList')
-  data.ListItems.forEach(function (item) {
-    var listItem = document.createElement('li')
-    listItem.style.fontWeight = '700'
-    listItem.textContent = item
-    statsList.appendChild(listItem)
-  })
+  // var statsList = document.getElementById('statsList')
+  // data.ListItems.forEach(function (item) {
+  //   var listItem = document.createElement('li')
+  //   listItem.style.fontWeight = '700'
+  //   listItem.textContent = item
+  //   statsList.appendChild(listItem)
+  // })
 
   // Set stats items
   var statsItemsContainer = document.getElementById('statsItemsContainer')
-  data.StatsItems.forEach(function (item) {
-    var statsItem = document.createElement('div')
-    statsItem.className = 'col-lg-4 col-md-6'
-    statsItem.innerHTML = `
-        <div class="stats-item text-center w-100 h-100">
-          <span data-purecounter-start="0" data-purecounter-end="${item.value}" data-purecounter-duration="1" class="purecounter"></span>
-          <p>${item.label}</p>
-        </div>
-      `
-    statsItemsContainer.appendChild(statsItem)
-  })
+  if (statsItemsContainer) {
+    data.StatsItems.forEach(function (item) {
+      var statsItem = document.createElement('div')
+      statsItem.className = 'col-lg-4 col-md-6'
+      statsItem.innerHTML = `
+          <div class="stats-item text-center w-100 h-100">
+            <span data-purecounter-start="0" data-purecounter-end="${item.value}" data-purecounter-duration="1" class="purecounter"></span>
+            <p>${item.label}</p>
+          </div>
+        `
+      statsItemsContainer.appendChild(statsItem)
+    })
+  }
 }
 
 // Call the function with the provided data
@@ -650,7 +652,7 @@ var servicesData = [
     title: 'Secured Loans',
     content:
       'Our key product offerings include Mortgage Loans and Home loans, we also offer Overdrafts for Businesses against the property mortgaged.',
-    image: './assets/img/services-features/SECURE_LOAN_COUPLE_UNDRSTNG.jpg',
+    image: './assets/img/services-features/SECURE_LOAN_COUPLE_UNDRSTNG.jpeg',
     order: 'contentFirst',
     icon: 'bi bi-briefcase',
   },
@@ -659,7 +661,7 @@ var servicesData = [
     content:
       'To help businesses manage and cover cash flow fluctuations, timely payments and other short term obligations we offer unsecured Overdraft facilities and Term Loans at attractive rates with simple and easy terms.',
     image:
-      './assets/img/services-features/UNSECURED_BIZZLOAN-2MEN_HANDSHAKE.jpg',
+      './assets/img/services-features/UNSECURED_BIZZLOAN-2MEN_HANDSHAKE.jpeg',
     order: 'imageFirst',
     icon: 'bi bi-card-checklist',
   },
@@ -667,7 +669,7 @@ var servicesData = [
     title: 'Supply Chain Finance',
     content:
       'An incredibly powerful method of financing that eases cash flow issues within the business, reduces risk of bad debts and improves the overall sales and performance of the entity.',
-    image: './assets/img/services-features/SUPPLY_CHAINFINANCE_PHOTO2.jpg',
+    image: './assets/img/services-features/SUPPLY_CHAINFINANCE_PHOTO2.jpeg',
     order: 'contentFirst',
     icon: 'bi bi-bar-chart',
   },
@@ -1310,15 +1312,14 @@ testimonialsData.testimonials.forEach(function (testimonial) {
   testimonialItem.innerHTML = `
     <div class="testimonial-item">
       <div class="d-flex">
-        <img src="${
-          testimonial.image
-        }" class="testimonial-img flex-shrink-0" alt="">
+        <img src="${testimonial.image
+    }" class="testimonial-img flex-shrink-0" alt="">
         <div>
           <h3>${testimonial.name}</h3>
           <h4>${testimonial.designation}</h4>
           <div class="stars">${'<i class="bi bi-star-fill"></i>'.repeat(
-            testimonial.rating
-          )}</div>
+      testimonial.rating
+    )}</div>
         </div>
       </div>
       <p>
